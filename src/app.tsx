@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react"
-import toast, { Toaster } from "react-hot-toast"
-import Cookies from "js-cookie"
-import { Moon, Sun } from "lucide-react"
+import { useState, useEffect } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
+import Cookies from 'js-cookie'
+import { Moon, Sun } from 'lucide-react'
 
-import { SignIn, SignUp, Profile } from "./components"
+import { SignIn, SignUp, Profile } from './components'
 
 function App() {
   const [mode, setMode] = useState<'sign-up' | 'sign-in'>('sign-up')
@@ -54,11 +54,28 @@ function App() {
 
   return (
     <div className="flex items-center justify-center h-screen">
-      <Toaster/>
-      <div className="absolute top-5 left-5" onClick={toggleTheme}>
-        {theme === 'dark' ? <Sun/> : <Moon/>}
+      <Toaster />
+      <div
+        className="absolute top-5 left-5"
+        onClick={toggleTheme}
+      >
+        {theme === 'dark' ? <Sun /> : <Moon />}
       </div>
-      {token ? <Profile logout={logout}/> : mode === 'sign-up' ? <SignUp className="animate-fadein" modeToggle={modeToggle} login={login} /> : <SignIn className="animate-fadein" modeToggle={modeToggle} login={login}/>}
+      {token ? (
+        <Profile logout={logout} />
+      ) : mode === 'sign-up' ? (
+        <SignUp
+          className="animate-fadein"
+          modeToggle={modeToggle}
+          login={login}
+        />
+      ) : (
+        <SignIn
+          className="animate-fadein"
+          modeToggle={modeToggle}
+          login={login}
+        />
+      )}
     </div>
   )
 }

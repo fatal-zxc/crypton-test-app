@@ -22,14 +22,14 @@ export const cryptonAPI = createApi({
         headers.set('Authorization', authToken)
       }
       return headers
-    } 
+    },
   }),
   endpoints: (build) => ({
     fetchUser: build.query<UserProfile, void>({
       query: () => ({
         url: '/profile',
-        method: 'GET'
-      })
+        method: 'GET',
+      }),
     }),
     registerUser: build.mutation<TokenData, FieldValues>({
       query: (data: FieldValues) => ({
@@ -51,11 +51,7 @@ export const cryptonAPI = createApi({
         },
       }),
     }),
-  })
+  }),
 })
 
-export const {
-  useRegisterUserMutation,
-  useLoginUserMutation,
-  useFetchUserQuery
-} = cryptonAPI
+export const { useRegisterUserMutation, useLoginUserMutation, useFetchUserQuery } = cryptonAPI
